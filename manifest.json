@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "De-AI Google Search",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Remove AI summary from Google search result",
   "permissions": [
     "webNavigation",

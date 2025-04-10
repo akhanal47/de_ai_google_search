@@ -26,7 +26,7 @@ jobs:
         id: check_version_update
         run: |
           NEW_VERSION=$(grep -o '"version": "[^"]*"' manifest.json | cut -d'"' -f4)
-          if [ -z "$NEW_VERSION" ]; then exit 1; fi # Basic check
+          if [ -z "$NEW_VERSION" ]; then exit 1; fi
 
           if git cat-file -e HEAD~1 &>/dev/null; then
             OLD_VERSION=$(git show HEAD~1:manifest.json 2>/dev/null | grep -o '"version": "[^"]*"' | cut -d'"' -f4 || echo "")
@@ -62,26 +62,18 @@ jobs:
 
       - name: Create Zip Archive
         run: |
-          zip -r ${{ steps.package_name.outputs.name }}.zip \
-            manifest.json \
-            background.js \
-            popup.html \
-            assets \
-            -x "*.git*" \
-            -x "*.github*" \
-            -x "*.pem"
+          zip -r ${{ steps.package_name.outputs.name }}.zip . -x "*.pem"
 
       - name: Create private key file from Secret
         run: |
           echo "${{ secrets.EXTENSION_PRIVATE_KEY }}" | base64 --decode > ${{ steps.package_name.outputs.name }}.pem
-          # Add a basic check for empty key file
           if [ ! -s "${{ steps.package_name.outputs.name }}.pem" ]; then exit 1; fi
           
           # Debugging info
-          echo "--- Pem file info ---"
+          echo "--- pem info---"
           ls -l ${{ steps.package_name.outputs.name }}.pem
           head -n 3 ${{ steps.package_name.outputs.name }}.pem
-          echo "--- End Pem info ---"
+          echo "--- end pem info ---"
 
       - name: Create CRX Package
         run: |
