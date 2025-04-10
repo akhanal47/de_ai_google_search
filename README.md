@@ -14,15 +14,18 @@ To use any of these methods please
 1. Enable the "Developer Mode"
 2. Select "Load Unpacked" button & select the folder where the repo is cloned
 
-#### Using the Zip File (From GitHub Releases)
+#### Using the Zip File (<span style="color: Green">Recommended</span>)
 1. Enable the "Developer Mode"
-2. [Dowload](https://github.com/akhanal47/de_ai_google_search/releases) and save ```de_ai_google_search.zip``` file then unzip it to your desired location.
+2. [Dowload](https://github.com/akhanal47/de_ai_google_search/releases) and save ```de-ai-google-search.zip``` file then unzip it to your desired location.
 3. Select "Load Unpacked" button & select the folder where you unzipped the extension files.
 
-#### Using the Crx File (From GitHub Releases)
+---
+The `.crx` file is provided for compatibility only, this method <span style="color: red">WILL NOT WORK ON GOOGLE CHROME</span>
+
+**Using the Crx File**
 1. Enable the "Developer Mode"
-2. [Dowload](https://github.com/akhanal47/de_ai_google_search/releases) and save the ``de_ai_google_search.crx`` file to your desired location
-2. Drag and drop the ```de_ai_google_search.crx``` file on the ```chrome://extensions/``` page
+2. [Dowload](https://github.com/akhanal47/de_ai_google_search/releases) and save the ``de-ai-google-search.crx`` file to your desired location
+2. Drag and drop the ```de_ai_google_search.crx``` file on the your browser extension page.
 
 ----
 
