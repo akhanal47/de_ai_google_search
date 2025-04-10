@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De-AI Google search</title>
+  <style>
+    body {
+      width: 220px;
+      padding: 7px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      color: #333;
+      background-color: #D0D0D0;
+    }
+    .header {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #008000;
+    }
+    .mode-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 5px;
+      margin-bottom: 6px;
+      border-radius: 6px;
+      background-color: #f5f5f5;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: background-color 0.2s ease-in-out;
+    }
+    .mode-option:hover {
+        background-color: #f1f1f1;
+    }
+    .mode-label {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+    .mode-label strong {
+        font-weight: 500;
+        color: #202124;
+    }
+     .mode-label span {
+        font-size: 10px;
+        color: #5f6368;
+        margin-top: 2px;
+     }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 24px;
+      transition: .3s;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 14px; 
+      width: 14px;  
+      left: 3px;    
+      bottom: 3px;  
+      background-color: white;
+      border-radius: 50%;
+      transition: .3s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    input:checked + .slider {
+      background-color: #52be80;
+    }
+    input:checked + .slider:before {
+      transform: translateX(16px);
+    }
+    .footer-note {
+        margin-top: 15px;
+        font-size: 11px;
+        text-align: center;
+        color: #777;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #e0e0e0;
+        margin: 8px 0;
+    }
+    .mode-option.disabled { 
+        opacity: 0.6;
+        background-color: #f5f5f5;
+        pointer-events: none; 
+    }
+     .mode-option.disabled .mode-label strong,
+     .mode-option.disabled .mode-label span {
+        color: #999;
+     }
+    .mode-option.disabled .slider {
+        cursor: not-allowed;
+        background-color: #e0e0e0;
+    }
+     .mode-option.disabled input:checked + .slider {
+        background-color: #b0bec5; 
+     }
+
+  </style>
+</head>
+<body>
+  <div class="header">De-AI Google search</div>
+
+  <!-- master toggle -->
+  <div class="mode-option">
+    <div class="mode-label">
+        <strong>Enable/Disable</strong>
+    </div>
+    <label class="toggle-switch">
+      <input type="checkbox" id="masterToggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <hr>
+
+  <!-- mode toggles -->
+  <div class="mode-option" id="minusAiOption">
+    <div class="mode-label">
+        <strong>Hide AI Overview</strong>
+        <span>appends <code>-ai</code> to searches</span>
+    </div>
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggleMinusAi">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="mode-option" id="udm14Option">
+    <div class="mode-label">
+        <strong>Web Only Results</strong>
+        <span>appends <code>udm=14</code> to url</span>
+    </div>
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggleUdm14">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="footer-note">
+      Modes available only when extension is enabled
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
